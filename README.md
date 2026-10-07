@@ -1,185 +1,102 @@
-# AI-powered-FinTech-Customer-Support-Assistant
+# FinTech Customer Support Assistant
 
-Build an AI-powered FinTech Customer Support Assistant that can answer user questions using a provided financial knowledge base.
+A document-grounded question-answering application for financial support content. PDFs are parsed and cleaned, split into overlapping chunks, embedded and indexed with LlamaIndex. FastAPI retrieves relevant passages and generates an answer with source citations; a Streamlit chat interface displays the answer and its references.
 
-## 1. Problem Statement
+## Architecture
 
-Build an AI-powered FinTech Customer Support Assistant that can answer user questions using a provided financial knowledge base.
-
-The system should use Retrieval-Augmented Generation (RAG) to retrieve relevant information from the provided documents before generating an answer.
-
-The assistant should provide accurate, grounded responses and should clearly indicate when the required information is not available in the knowledge base.
-
-## 2. Knowledge Base
-
-A financial question-answering/document dataset is provided as part of the assignment.
-
-Candidates should build their RAG pipeline using the provided data.
-
-You may choose your own:
-
-- Chunking strategy
-- Embedding model
-- Vector database
-- Retrieval strategy
-- LLM
-- Prompting approach
-
-**Note:** Your technical choices should be explained in the final video.
-
-## 3. Core Requirements
-
-Build a pipeline to:
-
-- Load the provided financial documents
-- Clean and preprocess the data
-- Split documents into appropriate chunks
-- Generate embeddings
-- Store and retrieve relevant information
-
-The system should implement:
+![Financial document RAG pipeline](./architecture_diagram.png)
 
 ```text
-User Query → Retrieval → Context → LLM → Grounded Answer
+PDFs → Clean & chunk → Gemini embeddings → persisted vector index
+     → similarity retrieval → grounded LLM answer + source citations
 ```
 
-The retrieved context should be relevant to the user's question.
+The index is stored locally and rebuilt when the PDF contents or embedding model change. Answers use retrieved context only; when the context is insufficient, the assistant is instructed to say that it could not find the information. The default models are `gemini-embedding-001` and `gemini-2.5-flash`.
 
-### Customer Support Interface
+## Requirements
 
-Build a simple interface where users can:
+- Python 3.11
+- A Gemini API key (used for embeddings and answer generation)
+- Financial PDF documents you are permitted to process
 
-- Ask financial questions
-- View generated answers
-- View the sources/references used to generate the answer
-- Ask follow-up questions where appropriate
+## Local setup
 
-### Grounded Responses
+From the repository root:
 
-The assistant should:
-
-- Answer using the provided knowledge base
-- Avoid making unsupported claims
-- Clearly communicate when information cannot be found
-- Provide relevant document/source references wherever possible
-
-**Example:**
-
-```text
-Answer: The applicable foreclosure charge is 3% of the outstanding principal.
-Source: Personal Loan Policy — Section 4.2
+```bash
+python3.11 -m venv .venv        # Windows: py -3.11 -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+python -m pip install -r backend/requirements.txt
 ```
 
-## 4. Evaluation & AI/ML Requirements
+Add your Gemini API key to the existing `backend/.env` file (use `backend/.env.example` only as a template if needed), then place the assignment PDFs in `backend/data/` (subdirectories are scanned too). The app uses Gemini for both answer generation and embeddings. The first chat request builds the local index; switching embedding models rebuilds it. Start the API and the Streamlit UI in separate terminals:
 
-Candidates should demonstrate an understanding of:
-
-- Data preprocessing
-- Chunking strategies
-- Embeddings
-- Vector search
-- Retrieval strategies
-- Prompt engineering
-- LLM selection
-- Hallucination mitigation
-- RAG evaluation
-
-Candidates should define and evaluate suitable metrics such as:
-
-- Retrieval quality
-- Answer correctness
-- Groundedness
-- Citation/source accuracy
-
-A small evaluation set should be created or used to demonstrate the effectiveness of the implemented RAG pipeline.
-
-## 5. System Design
-
-The solution should include an architecture similar to:
-
-```text
-Documents → Preprocessing → Chunking → Embeddings → Vector Store → Retriever → LLM → Response
+```bash
+uvicorn app.main:app --app-dir backend --reload
 ```
 
-Candidates should make appropriate technology choices and justify them.
+```bash
+streamlit run frontend/app.py
+```
 
-Possible technologies include:
+The UI defaults to `http://localhost:8000`. Override the API origin with `API_URL` if needed. API health is available at `/health`; interactive API documentation is at `/docs`.
 
-- Python
-- FastAPI / Flask / Django
-- LangChain / LlamaIndex
-- FAISS / Chroma / Qdrant / pgvector / Pinecone
-- OpenAI / Gemini / other LLM providers
-- React / Next.js for the interface
+## Configuration
 
-**Note:** These are examples only; candidates may choose suitable alternatives.
+See [`backend/.env.example`](./backend/.env.example) for all supported settings. Gemini API quotas and rate limits depend on your Google AI plan and model.
 
-## 6. Bonus Features
+| Variable | Default | Purpose |
+|---|---|---|
+| `GEMINI_API_KEY` | — | Google AI Studio API key |
+| `GEMINI_MODEL` | `gemini-2.5-flash` | Answer-generation model |
+| `GEMINI_EMBEDDING_MODEL` | `gemini-embedding-001` | Embedding model |
+| `SIMILARITY_TOP_K` | `4` | Retrieved chunks per question |
+| `CHUNK_SIZE` | `768` | Chunk size in tokens |
+| `CHUNK_OVERLAP` | `100` | Overlap in tokens |
+| `RAG_DATA_DIR` | `backend/data` | PDF input directory |
+| `RAG_INDEX_DIR` | `backend/storage` | Persisted index directory |
 
-The following are optional:
+Keep API keys in `.env`, never in source control. The service returns a clear error if the key or PDF corpus is missing.
 
-- Conversation memory
-- Hybrid search
-- Reranking
-- Query rewriting
-- Streaming responses
-- Confidence/relevance scoring
-- Multiple document types
-- Evaluation dashboard
-- Automated evaluation
-- Caching
-- Dockerization
-- Unit/integration tests
-- Observability/logging
-- Cost and latency optimization
+## API
 
-## 7. Submission Requirements
+`POST /chat`
 
-Submit a GitHub repository containing:
+```json
+{"question": "What is the foreclosure charge?"}
+```
 
-- Complete source code
-- README
-- Setup instructions
-- Environment variable documentation
-- RAG architecture
-- Model/vector database details
-- API documentation, if applicable
+The response contains an `answer` and a `sources` array. Each source includes its filename, optional page, retrieval score, and excerpt. Requests are stateless; conversation history is displayed by the UI but is not sent as model context.
 
-Submit a publicly accessible URL of the working application.
+Questions asking to list or name all policies are answered from the first-page titles of every PDF in the knowledge base, so the inventory includes documents beyond the similarity-retrieval limit.
 
-If an API is used, provide the relevant API endpoint/documentation.
+## Evaluation
 
-### 5-Minute Explanation Video
+Create a JSON Lines file with one case per line. `expected_sources` is optional; source names are matched as case-insensitive substrings of the retrieved filenames.
 
-Maximum duration: 5 minutes
+```json
+{"question":"What is the loan fee?","expected_answer":"The fee is stated in the loan policy.","expected_sources":["loan-policy.pdf"]}
+```
 
-The video should explain:
+Run from the repository root after configuring the API and adding PDFs:
 
-- Problem understanding
-- Overall system architecture
-- Data preprocessing approach
-- Chunking strategy
-- Embedding/model selection
-- Retrieval approach
-- Prompt/LLM strategy
-- Evaluation methodology
-- Key trade-offs
-- Challenges encountered
-- Short demonstration of the application
-- What you would improve with more time
+```bash
+PYTHONPATH=backend python backend/evaluate.py --cases backend/data/evaluation.jsonl
+```
 
-## 8. Evaluation Criteria
+The script reports mean answer token F1 (a lexical-overlap proxy, not semantic correctness) and source hit rate for cases with expected sources. Review the generated answers and citations manually as part of evaluation; these simple metrics do not by themselves establish groundedness or factual accuracy.
 
-| Area | Weightage |
-|---|---:|
-| RAG Quality & Answer Accuracy | 25% |
-| Retrieval & Evaluation Strategy | 20% |
-| AI/ML Understanding | 15% |
-| System Design & Architecture | 15% |
-| Code Quality | 10% |
-| UI/UX & Usability | 5% |
-| Documentation & Explanation | 10% |
+## Docker
 
-## 9. Final Note
+Build and run the API container from the repository root:
 
-The goal is not to build a chatbot wrapper around an LLM. We are looking for a solution that demonstrates an understanding of RAG architecture, information retrieval, AI/ML concepts, evaluation, hallucination mitigation, and practical AI engineering.
+```bash
+docker build -t fintech-rag-assistant .
+docker run --rm -p 8000:8000 \
+  --env-file backend/.env \
+  -v "$PWD/backend/data:/app/backend/data" \
+  -v "$PWD/backend/storage:/app/backend/storage" \
+  fintech-rag-assistant
+```
+
+Run the Streamlit frontend separately with the local Python setup and `API_URL=http://localhost:8000`.

@@ -1,0 +1,9 @@
+.git
+.env
+backend/.env
+backend/storage/
+backend/data/*.pdf
+backend/data/**/*.pdf
+**/__pycache__/
+**/*.py[cod]
+.venv/
