@@ -4,7 +4,7 @@ A document-grounded question-answering application for financial support content
 
 ## Architecture
 
-![Financial document RAG pipeline](./architecture_diagram.png)
+![Financial document RAG pipeline](./architecture_diagram.jpg)
 
 ```text
 PDFs → Clean & chunk → Gemini embeddings → persisted vector index
