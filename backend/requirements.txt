@@ -1,12 +1,10 @@
 fastapi==0.115.6
 uvicorn[standard]==0.34.0
-llama-index-core==0.12.12
-llama-index-readers-file==0.4.3
-llama-index-embeddings-google-genai==0.1.1
-llama-index-llms-google-genai==0.1.3
-llama-index-vector-stores-chroma==0.4.1
+openai==1.59.9
 chromadb==0.5.23
-pypdf==5.1.0
+rank-bm25==0.2.2
+pdfplumber==0.11.9
+sentence-transformers==3.3.1
 python-dotenv==1.0.1
 streamlit==1.41.0
 requests==2.32.3
