@@ -16,17 +16,17 @@ Question (+ chat history)
      ─► follow-up rewrite ─► dense search ┐
                                           ├─► reciprocal-rank fusion ─► cross-encoder rerank
                           BM25 search    ┘                                   │
-     ◄─ answer + verified citations ◄─ grounded Grok prompt ◄─ relevance gate (cosine threshold)
+     ◄─ answer + verified citations ◄─ grounded Groq prompt ◄─ relevance gate (cosine threshold)
 ```
 
 | Stage | Choice | Why |
 |---|---|---|
 | Extraction | `pdfplumber` | Reads tables as rows (pypdf returns one cell per line) and lets glyphs be repaired per character (the PDFs draw `₹` with a symbol font that otherwise becomes `■`). |
 | Chunking | Structure-aware: one chunk per section, sub-section or FAQ item; oversized sections are packed by lines up to `CHUNK_MAX_WORDS` with overlap; tables are never split | Policy documents are organised by numbered clauses. Chunking on that structure makes every chunk citable as *Document — Section 6.2, p. 3* and keeps a rule and its numbers together. Each chunk starts with a breadcrumb (document › section) so it is self-describing. |
-| Embeddings | `BAAI/bge-small-en-v1.5` via sentence-transformers, run locally | xAI has no dependable embeddings API, so embeddings run on your machine: free, no extra API key, no document text leaves the machine for indexing, and it is a strong small retrieval model. Queries get BGE's retrieval instruction prefix. |
+| Embeddings | `BAAI/bge-small-en-v1.5` via sentence-transformers, run locally | Embeddings run locally: no separate embeddings API key is needed, document text stays on your machine during indexing, and BGE provides a strong small retrieval model. Queries get its retrieval instruction prefix. |
 | Vector store | Chroma (persistent, cosine distance) | A real vector database with metadata support, no server to run. The index is rebuilt automatically when the PDFs, embedding model or chunk settings change. |
 | Retrieval | Dense + BM25 fused with reciprocal rank fusion, then a cross-encoder reranker (`ms-marco-MiniLM-L-6-v2`) | The corpus mixes prose with exact identifiers and numbers (for example `MET-PL-1301`). Dense search handles paraphrases, BM25 handles exact terms, the reranker fixes the final order. Falls back to hybrid automatically if the reranker cannot load. |
-| LLM | xAI Grok (`grok-4-fast-non-reasoning` by default), temperature 0, via the OpenAI-compatible API | Fast and inexpensive; the non-reasoning variant gives short, deterministic, grounded answers with no hidden reasoning tokens. |
+| LLM | Groq (`openai/gpt-oss-20b` by default), via the OpenAI-compatible API | Uses Groq-hosted GPT-OSS for grounded answer generation and query rewriting. |
 | Memory | The UI sends the last few messages; the API rewrites a follow-up ("and after 24 months?") into a standalone question before retrieval | Stateless API, no session storage, and follow-ups retrieve correctly. |
 
 ### Hallucination mitigation
@@ -43,16 +43,16 @@ The FAQ entries in the PDFs sometimes cite a different section number than the s
 ## Requirements
 
 - Python 3.11
-- An xAI (Grok) API key
+- A Groq API key
 - The knowledge-base PDFs in `backend/data/`
 
 ## Local setup
 
 ```bash
-python3.11 -m venv .venv            # Windows: py -3.11 -m venv .venv
+python3.11 -m venv .venv              # Windows: py -3.11 -m venv .venv
 source .venv/bin/activate            # Windows: .venv\Scripts\activate
 python -m pip install -r backend/requirements.txt
-cp backend/.env.example backend/.env   # then set XAI_API_KEY
+cp backend/.env.groq.example backend/.env   # then set GROQ_API_KEY
 ```
 
 Start the API and the UI in two terminals (from the repository root):
@@ -68,9 +68,9 @@ The first start downloads the embedding model (about 130 MB) and builds the inde
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `XAI_API_KEY` | — | xAI API key (required) |
-| `XAI_MODEL` | `grok-4-fast-non-reasoning` | Answer generation, query rewriting and evaluation judge. Confirm the exact model id in the xAI console |
-| `XAI_BASE_URL` | `https://api.x.ai/v1` | OpenAI-compatible endpoint |
+| `GROQ_API_KEY` | — | Groq API key (required). Legacy `XAI_API_KEY` is accepted as a fallback |
+| `GROQ_MODEL` | `openai/gpt-oss-20b` | Answer generation, query rewriting and evaluation judge. Legacy `XAI_MODEL` is accepted as a fallback |
+| `GROQ_BASE_URL` | `https://api.groq.com/openai/v1` | OpenAI-compatible endpoint. Legacy `XAI_BASE_URL` is accepted as a fallback |
 | `EMBEDDING_MODEL` | `BAAI/bge-small-en-v1.5` | Local sentence-transformers embedding model |
 | `EMBEDDING_QUERY_PREFIX` | auto | Query-side instruction; set automatically for BGE English models |
 | `RETRIEVAL_MODE` | `hybrid_rerank` | `dense`, `hybrid` or `hybrid_rerank` |
