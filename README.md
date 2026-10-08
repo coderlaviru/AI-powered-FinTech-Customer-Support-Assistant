@@ -1,185 +1,178 @@
-# AI-powered-FinTech-Customer-Support-Assistant
+# FinTech Customer Support Assistant
 
-Build an AI-powered FinTech Customer Support Assistant that can answer user questions using a provided financial knowledge base.
+A document-grounded customer-support assistant built with Retrieval-Augmented Generation (RAG). It answers questions only from the provided FinBase PDFs, cites the exact document, section and page for each answer, and says so when the knowledge base does not contain the answer.
 
-## 1. Problem Statement
+> **Deployment note:** this project is not deployed to a public URL because the company did not approve hosting. It runs locally with the steps below, and the explanation video demonstrates the working application.
 
-Build an AI-powered FinTech Customer Support Assistant that can answer user questions using a provided financial knowledge base.
+## Architecture
 
-The system should use Retrieval-Augmented Generation (RAG) to retrieve relevant information from the provided documents before generating an answer.
-
-The assistant should provide accurate, grounded responses and should clearly indicate when the required information is not available in the knowledge base.
-
-## 2. Knowledge Base
-
-A financial question-answering/document dataset is provided as part of the assignment.
-
-Candidates should build their RAG pipeline using the provided data.
-
-You may choose your own:
-
-- Chunking strategy
-- Embedding model
-- Vector database
-- Retrieval strategy
-- LLM
-- Prompting approach
-
-**Note:** Your technical choices should be explained in the final video.
-
-## 3. Core Requirements
-
-Build a pipeline to:
-
-- Load the provided financial documents
-- Clean and preprocess the data
-- Split documents into appropriate chunks
-- Generate embeddings
-- Store and retrieve relevant information
-
-The system should implement:
+![Financial document RAG pipeline](./architecture_diagram.jpg)
 
 ```text
-User Query → Retrieval → Context → LLM → Grounded Answer
+PDFs ─► extract (text + tables) ─► clean ─► section-aware chunks (with citation metadata)
+     ─► local embeddings (bge-small) ─► Chroma (persistent, cosine)
+
+Question (+ chat history)
+     ─► follow-up rewrite ─► dense search ┐
+                                          ├─► reciprocal-rank fusion ─► cross-encoder rerank
+                          BM25 search    ┘                                   │
+     ◄─ answer + verified citations ◄─ grounded Grok prompt ◄─ relevance gate (cosine threshold)
 ```
 
-The retrieved context should be relevant to the user's question.
+| Stage | Choice | Why |
+|---|---|---|
+| Extraction | `pdfplumber` | Reads tables as rows (pypdf returns one cell per line) and lets glyphs be repaired per character (the PDFs draw `₹` with a symbol font that otherwise becomes `■`). |
+| Chunking | Structure-aware: one chunk per section, sub-section or FAQ item; oversized sections are packed by lines up to `CHUNK_MAX_WORDS` with overlap; tables are never split | Policy documents are organised by numbered clauses. Chunking on that structure makes every chunk citable as *Document — Section 6.2, p. 3* and keeps a rule and its numbers together. Each chunk starts with a breadcrumb (document › section) so it is self-describing. |
+| Embeddings | `BAAI/bge-small-en-v1.5` via sentence-transformers, run locally | xAI has no dependable embeddings API, so embeddings run on your machine: free, no extra API key, no document text leaves the machine for indexing, and it is a strong small retrieval model. Queries get BGE's retrieval instruction prefix. |
+| Vector store | Chroma (persistent, cosine distance) | A real vector database with metadata support, no server to run. The index is rebuilt automatically when the PDFs, embedding model or chunk settings change. |
+| Retrieval | Dense + BM25 fused with reciprocal rank fusion, then a cross-encoder reranker (`ms-marco-MiniLM-L-6-v2`) | The corpus mixes prose with exact identifiers and numbers (for example `MET-PL-1301`). Dense search handles paraphrases, BM25 handles exact terms, the reranker fixes the final order. Falls back to hybrid automatically if the reranker cannot load. |
+| LLM | xAI Grok (`grok-4-fast-non-reasoning` by default), temperature 0, via the OpenAI-compatible API | Fast and inexpensive; the non-reasoning variant gives short, deterministic, grounded answers with no hidden reasoning tokens. |
+| Memory | The UI sends the last few messages; the API rewrites a follow-up ("and after 24 months?") into a standalone question before retrieval | Stateless API, no session storage, and follow-ups retrieve correctly. |
 
-### Customer Support Interface
+### Hallucination mitigation
 
-Build a simple interface where users can:
+1. **Relevance gate.** If the best chunk's cosine similarity is below `MIN_SIMILARITY`, the assistant refuses without calling the LLM.
+2. **Grounding prompt.** Answer only from numbered passages, cite `[S#]` after each fact, otherwise reply `NOT_FOUND`.
+3. **Citation verification.** Every `[S#]` marker is checked against the retrieved set. Invalid markers are removed and answers without verifiable citations are flagged in the API (`citations_verified`) and the UI.
+4. **Honest sources.** Refusals return no sources; answers list the cited passages first, then other retrieved passages.
 
-- Ask financial questions
-- View generated answers
-- View the sources/references used to generate the answer
-- Ask follow-up questions where appropriate
+### Data-quality finding
 
-### Grounded Responses
+The FAQ entries in the PDFs sometimes cite a different section number than the section that actually holds the rule (for example the personal-loan FAQ says "Section 4.2" for foreclosure, which is actually Section 6.2). The assistant cites the **real** section and page of the chunk it used, and shows FAQ items as `FAQ Q001 (Section 23)`. The prompt tells the model not to repeat section numbers found inside passage text.
 
-The assistant should:
+## Requirements
 
-- Answer using the provided knowledge base
-- Avoid making unsupported claims
-- Clearly communicate when information cannot be found
-- Provide relevant document/source references wherever possible
+- Python 3.11
+- An xAI (Grok) API key
+- The knowledge-base PDFs in `backend/data/`
 
-**Example:**
+## Local setup
+
+```bash
+python3.11 -m venv .venv            # Windows: py -3.11 -m venv .venv
+source .venv/bin/activate            # Windows: .venv\Scripts\activate
+python -m pip install -r backend/requirements.txt
+cp backend/.env.example backend/.env   # then set XAI_API_KEY
+```
+
+Start the API and the UI in two terminals (from the repository root):
+
+```bash
+uvicorn app.main:app --app-dir backend --reload
+streamlit run frontend/app.py
+```
+
+The first start downloads the embedding model (about 130 MB) and builds the index (about 750 chunks, one-off); later starts reuse both. The UI uses `http://localhost:8000` unless `API_URL` is set. Interactive API docs: `/docs`. The reranker model (about 90 MB) downloads from Hugging Face on first use; if it is unavailable the API logs a warning and serves hybrid results.
+
+## Configuration
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `XAI_API_KEY` | — | xAI API key (required) |
+| `XAI_MODEL` | `grok-4-fast-non-reasoning` | Answer generation, query rewriting and evaluation judge. Confirm the exact model id in the xAI console |
+| `XAI_BASE_URL` | `https://api.x.ai/v1` | OpenAI-compatible endpoint |
+| `EMBEDDING_MODEL` | `BAAI/bge-small-en-v1.5` | Local sentence-transformers embedding model |
+| `EMBEDDING_QUERY_PREFIX` | auto | Query-side instruction; set automatically for BGE English models |
+| `RETRIEVAL_MODE` | `hybrid_rerank` | `dense`, `hybrid` or `hybrid_rerank` |
+| `RERANKER_MODEL` | `cross-encoder/ms-marco-MiniLM-L-6-v2` | Cross-encoder used for reranking |
+| `TOP_K` | `5` | Passages sent to the LLM |
+| `CANDIDATE_K` | `20` | Candidates fetched from each retriever before fusion |
+| `RERANK_POOL` | `12` | Fused candidates passed to the reranker |
+| `MIN_SIMILARITY` | `0.40` | Refuse without calling the LLM below this top cosine similarity (calibrate, see below) |
+| `CHUNK_MAX_WORDS` | `250` | Maximum chunk size, in words |
+| `CHUNK_OVERLAP_WORDS` | `40` | Overlap between split chunks of one section, in words |
+| `HISTORY_TURNS` | `6` | Previous messages used for follow-up rewriting |
+| `RAG_DATA_DIR` / `RAG_INDEX_DIR` | `backend/data` / `backend/storage` | PDF folder (scanned recursively) / persisted index |
+
+Keep API keys in `.env`, never in source control.
+
+## API
+
+`POST /chat`
+
+```json
+{
+  "question": "And what if I close it after 24 months?",
+  "history": [
+    {"role": "user", "content": "What is the foreclosure charge before 24 months?"},
+    {"role": "assistant", "content": "3% of the outstanding principal."}
+  ],
+  "retrieval_mode": "hybrid_rerank"
+}
+```
+
+`history` and `retrieval_mode` are optional. The response contains:
+
+| Field | Meaning |
+|---|---|
+| `answer` | Answer text with `[S#]` citation markers, or the not-found message |
+| `sources[]` | `label` (document — section, page), `section`, `pages`, `file_name`, `excerpt`, `similarity`, `cited` |
+| `refused` / `route` | Whether the assistant declined, and why (`rag`, `catalog`, `gate_refusal`, `llm_refusal`) |
+| `retrieval_score` | Top dense cosine similarity |
+| `citations_verified` | All citations valid and at least one present |
+| `standalone_question` | The question actually retrieved on (after follow-up rewriting) |
+| `retrieval_mode`, `timings` | Strategy used and per-stage latency in seconds |
+
+Other endpoints: `GET /health`, `GET /`. Questions that ask to list the available documents are answered from the index catalogue (`route: "catalog"`).
+
+## Evaluation
+
+`backend/eval/eval_set.jsonl` holds 47 questions written from the PDFs: 32 single-fact, 2 multi-chunk, 3 follow-ups (with chat history) and 10 unanswerable questions (topics that are absent from the corpus, such as home loans or the CEO). Every gold section and expected fact is verified against the real PDFs by `tests/test_eval_set.py`.
+
+```bash
+cd backend
+python evaluate.py                       # ablation + end-to-end metrics (uses Grok)
+python evaluate.py --retrieval-only      # retrieval ablation only (local query embeddings only)
+python evaluate.py --limit 10 --sleep 2  # smoke test / free-tier friendly
+```
+
+| Area | Metric | How it is measured |
+|---|---|---|
+| Retrieval quality | Hit@1/3/5, Recall@5, MRR | Gold section(s) present in the top-k chunks; ablation across `dense`, `hybrid`, `hybrid_rerank` |
+| Answer correctness | Fact match, judge correctness | Key facts present in the answer (deterministic); LLM judge versus a reference answer |
+| Groundedness | Supported-claim rate | LLM judge checks each claim against the cited passages |
+| Citation accuracy | Validity, hit rate, precision | Markers resolve to retrieved passages; cited chunks include the gold section; share of cited chunks that are gold |
+| Hallucination control | Refusal rate on unanswerable, false-refusal rate on answerable | Direct counts |
+| Cost / latency | Mean and p95 latency per question | Wall-clock |
+
+Results are written to `backend/eval/results/` (JSON and Markdown). The judge uses the same Grok model as the generator, so treat its scores as relative comparisons between pipeline variants.
+
+**Calibrating `MIN_SIMILARITY`:** the report prints the top-similarity range for answerable and unanswerable questions plus two thresholds: one that never blocks a valid question and one that best separates the two groups. Set `MIN_SIMILARITY` from that output. Unanswerable questions about nearby topics (for example "home loan rate") score close to real questions, so the gate catches off-topic queries and the grounding prompt catches the rest.
+
+## Tests
+
+```bash
+python -m pip install -r backend/requirements-dev.txt
+cd backend && python -m pytest -q
+```
+
+The suite (ingestion, retrieval, engine, API, evaluation harness, dataset integrity) runs offline with a deterministic fake embedder and a scripted LLM, so it needs no API key or model download.
+
+## Docker (optional)
+
+```bash
+docker build -t fintech-rag-assistant .
+docker run --rm -p 8000:8000 --env-file backend/.env \
+  -v "$PWD/backend/data:/app/backend/data" \
+  -v "$PWD/backend/storage:/app/backend/storage" \
+  fintech-rag-assistant
+```
+
+Run the Streamlit frontend separately with `API_URL=http://localhost:8000`.
+
+## Project layout
 
 ```text
-Answer: The applicable foreclosure charge is 3% of the outstanding principal.
-Source: Personal Loan Policy — Section 4.2
+backend/app/config.py       validated settings
+backend/app/ingestion.py    PDF extraction, cleaning, section-aware chunking
+backend/app/embeddings.py   local sentence-transformers embedder
+backend/app/llm.py          Grok (OpenAI-compatible) chat client
+backend/app/index_store.py  Chroma index build / reuse
+backend/app/retrieval.py    dense, BM25, RRF fusion, cross-encoder rerank
+backend/app/rag_engine.py   rewrite, gate, grounded prompt, citation checks
+backend/app/main.py         FastAPI service
+backend/evaluate.py         evaluation harness
+backend/eval/eval_set.jsonl evaluation questions
+backend/tests/              offline test suite
+frontend/app.py             Streamlit chat UI
 ```
-
-## 4. Evaluation & AI/ML Requirements
-
-Candidates should demonstrate an understanding of:
-
-- Data preprocessing
-- Chunking strategies
-- Embeddings
-- Vector search
-- Retrieval strategies
-- Prompt engineering
-- LLM selection
-- Hallucination mitigation
-- RAG evaluation
-
-Candidates should define and evaluate suitable metrics such as:
-
-- Retrieval quality
-- Answer correctness
-- Groundedness
-- Citation/source accuracy
-
-A small evaluation set should be created or used to demonstrate the effectiveness of the implemented RAG pipeline.
-
-## 5. System Design
-
-The solution should include an architecture similar to:
-
-```text
-Documents → Preprocessing → Chunking → Embeddings → Vector Store → Retriever → LLM → Response
-```
-
-Candidates should make appropriate technology choices and justify them.
-
-Possible technologies include:
-
-- Python
-- FastAPI / Flask / Django
-- LangChain / LlamaIndex
-- FAISS / Chroma / Qdrant / pgvector / Pinecone
-- OpenAI / Gemini / other LLM providers
-- React / Next.js for the interface
-
-**Note:** These are examples only; candidates may choose suitable alternatives.
-
-## 6. Bonus Features
-
-The following are optional:
-
-- Conversation memory
-- Hybrid search
-- Reranking
-- Query rewriting
-- Streaming responses
-- Confidence/relevance scoring
-- Multiple document types
-- Evaluation dashboard
-- Automated evaluation
-- Caching
-- Dockerization
-- Unit/integration tests
-- Observability/logging
-- Cost and latency optimization
-
-## 7. Submission Requirements
-
-Submit a GitHub repository containing:
-
-- Complete source code
-- README
-- Setup instructions
-- Environment variable documentation
-- RAG architecture
-- Model/vector database details
-- API documentation, if applicable
-
-Submit a publicly accessible URL of the working application.
-
-If an API is used, provide the relevant API endpoint/documentation.
-
-### 5-Minute Explanation Video
-
-Maximum duration: 5 minutes
-
-The video should explain:
-
-- Problem understanding
-- Overall system architecture
-- Data preprocessing approach
-- Chunking strategy
-- Embedding/model selection
-- Retrieval approach
-- Prompt/LLM strategy
-- Evaluation methodology
-- Key trade-offs
-- Challenges encountered
-- Short demonstration of the application
-- What you would improve with more time
-
-## 8. Evaluation Criteria
-
-| Area | Weightage |
-|---|---:|
-| RAG Quality & Answer Accuracy | 25% |
-| Retrieval & Evaluation Strategy | 20% |
-| AI/ML Understanding | 15% |
-| System Design & Architecture | 15% |
-| Code Quality | 10% |
-| UI/UX & Usability | 5% |
-| Documentation & Explanation | 10% |
-
-## 9. Final Note
-
-The goal is not to build a chatbot wrapper around an LLM. We are looking for a solution that demonstrates an understanding of RAG architecture, information retrieval, AI/ML concepts, evaluation, hallucination mitigation, and practical AI engineering.
