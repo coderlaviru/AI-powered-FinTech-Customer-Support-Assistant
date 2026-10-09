@@ -88,8 +88,12 @@ def test_settings_defaults_and_bge_prefix(monkeypatch):
     ):
         monkeypatch.delenv(name, raising=False)
     settings = Settings.from_env()
-    assert settings.embedding_model == "BAAI/bge-small-en-v1.5"
-    assert settings.embedding_query_prefix == BGE_QUERY_PREFIX
+    assert settings.embedding_model == "sentence-transformers/all-MiniLM-L6-v2"
+    assert settings.embedding_query_prefix == ""
+
+    monkeypatch.setenv("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
+    assert Settings.from_env().embedding_query_prefix == BGE_QUERY_PREFIX
+    monkeypatch.delenv("EMBEDDING_MODEL")
     assert settings.llm_model == "openai/gpt-oss-20b"
     assert settings.llm_base_url == "https://api.groq.com/openai/v1"
 
