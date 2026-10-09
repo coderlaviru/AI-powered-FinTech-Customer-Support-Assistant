@@ -14,4 +14,5 @@ WORKDIR /app
 COPY --from=builder /install /usr/local
 COPY backend /app/backend
 EXPOSE 8000
+
 CMD ["uvicorn", "app.main:app", "--app-dir", "/app/backend", "--host", "0.0.0.0", "--port", "8000"]
