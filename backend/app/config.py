@@ -65,7 +65,7 @@ class Settings:
         mode = os.getenv("RETRIEVAL_MODE", "hybrid_rerank").strip().lower()
         if mode not in RETRIEVAL_MODES:
             raise ValueError(f"RETRIEVAL_MODE must be one of {RETRIEVAL_MODES}, got {mode!r}.")
-        embedding_model = os.getenv("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
+        embedding_model = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
         default_prefix = BGE_QUERY_PREFIX if "bge" in embedding_model.lower() and "-en-" in embedding_model.lower() else ""
         settings = cls(
             llm_api_key=os.getenv("GROQ_API_KEY") or os.getenv("XAI_API_KEY") or None,
