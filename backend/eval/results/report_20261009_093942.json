@@ -1,0 +1,2028 @@
+{
+  "timestamp": "2026-10-09 09:29 UTC",
+  "question_count": 47,
+  "retrieval_ablation": {
+    "dense": {
+      "effective_mode": "dense",
+      "hit@1": 0.1892,
+      "hit@3": 0.2432,
+      "hit@5": 0.2703,
+      "recall@1": 0.1892,
+      "recall@3": 0.2432,
+      "recall@5": 0.2703,
+      "mrr": 0.2185,
+      "per_question": [
+        {
+          "id": "si01",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si02",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si03",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si04",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si05",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si06",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si07",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.25
+        },
+        {
+          "id": "si08",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si09",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si10",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si11",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si12",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si13",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si14",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si15",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si16",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si17",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si18",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si19",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si20",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si21",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si22",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.3333333333333333
+        },
+        {
+          "id": "si23",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si24",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si25",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si26",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si27",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.5
+        },
+        {
+          "id": "si28",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si29",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si30",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si31",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si32",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "mu33",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "mu34",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "fo35",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "fo36",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "fo37",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        }
+      ]
+    },
+    "hybrid": {
+      "effective_mode": "hybrid",
+      "hit@1": 0.2432,
+      "hit@3": 0.3243,
+      "hit@5": 0.4054,
+      "recall@1": 0.2432,
+      "recall@3": 0.3243,
+      "recall@5": 0.4054,
+      "mrr": 0.2982,
+      "per_question": [
+        {
+          "id": "si01",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si02",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si03",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si04",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si05",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si06",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si07",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.5
+        },
+        {
+          "id": "si08",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.5
+        },
+        {
+          "id": "si09",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si10",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.25
+        },
+        {
+          "id": "si11",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si12",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si13",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si14",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si15",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si16",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si17",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si18",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si19",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.25
+        },
+        {
+          "id": "si20",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si21",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si22",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si23",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.2
+        },
+        {
+          "id": "si24",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si25",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si26",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si27",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si28",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si29",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si30",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.3333333333333333
+        },
+        {
+          "id": "si31",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si32",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "mu33",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "mu34",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "fo35",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "fo36",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "fo37",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        }
+      ]
+    },
+    "hybrid_rerank": {
+      "effective_mode": "hybrid_rerank",
+      "hit@1": 0.2973,
+      "hit@3": 0.2973,
+      "hit@5": 0.3243,
+      "recall@1": 0.2973,
+      "recall@3": 0.2973,
+      "recall@5": 0.3243,
+      "mrr": 0.3027,
+      "per_question": [
+        {
+          "id": "si01",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si02",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si03",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si04",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si05",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si06",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si07",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si08",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si09",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si10",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si11",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si12",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si13",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si14",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si15",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si16",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si17",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si18",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si19",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si20",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si21",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si22",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si23",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "si24",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si25",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si26",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si27",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si28",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 0.2
+        },
+        {
+          "id": "si29",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si30",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si31",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "si32",
+          "recall@1": 1.0,
+          "hit@1": 1.0,
+          "recall@3": 1.0,
+          "hit@3": 1.0,
+          "recall@5": 1.0,
+          "hit@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "id": "mu33",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "mu34",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "fo35",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "fo36",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        },
+        {
+          "id": "fo37",
+          "recall@1": 0.0,
+          "hit@1": 0.0,
+          "recall@3": 0.0,
+          "hit@3": 0.0,
+          "recall@5": 0.0,
+          "hit@5": 0.0,
+          "mrr": 0.0
+        }
+      ]
+    }
+  },
+  "similarity_calibration": {
+    "answerable": {
+      "min": 0.3679,
+      "mean": 0.6726,
+      "max": 0.8614
+    },
+    "unanswerable": {
+      "min": 0.0794,
+      "mean": 0.4573,
+      "max": 0.6398
+    },
+    "never_block_valid_questions": 0.363,
+    "best_balanced_threshold": 0.608,
+    "best_balanced_accuracy": 0.896,
+    "unanswerable_blocked_at_safe_threshold": 0.2
+  },
+  "pipeline": {
+    "mode": "hybrid_rerank",
+    "failed": [],
+    "summary": {
+      "answerable_count": 37,
+      "unanswerable_count": 10,
+      "false_refusal_rate": 0.0811,
+      "fact_match_rate": 0.8378,
+      "judge_correctness": 0.8824,
+      "groundedness": 1.0,
+      "citation_validity": 0.8919,
+      "citation_hit_rate": 0.3243,
+      "citation_precision": 0.3243,
+      "refusal_rate_on_unanswerable": 1.0,
+      "latency_mean_s": 6.4506,
+      "latency_p95_s": 11.373
+    },
+    "rows": [
+      {
+        "id": "si01",
+        "category": "single",
+        "question": "What is the foreclosure charge if I close my personal loan within 24 months?",
+        "answer": "The foreclosure charge for closing a personal loan before completing 24 months is 3 % of the outstanding principal balance plus 18 % GST. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7865,
+        "latency_s": 1.49,
+        "standalone_question": "What is the foreclosure charge if I close my personal loan within 24 months?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q041 (Section 23), p. 16"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si02",
+        "category": "single",
+        "question": "What is the minimum CIBIL score required for a personal loan?",
+        "answer": "The minimum CIBIL score required for a personal loan is **720**. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7132,
+        "latency_s": 1.31,
+        "standalone_question": "What is the minimum CIBIL score required for a personal loan?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q087 (Section 23), p. 24"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si03",
+        "category": "single",
+        "question": "How much part-prepayment can I make each year without any penalty?",
+        "answer": "You can part‑prepay up to **25 % of the outstanding principal balance once per financial year** with zero penalty, provided you have paid at least 6 consecutive EMIs. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.5999,
+        "latency_s": 2.298,
+        "standalone_question": "How much part-prepayment can I make each year without any penalty?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q034 (Section 23), p. 15"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si04",
+        "category": "single",
+        "question": "What is the penal interest rate on overdue personal loan EMIs?",
+        "answer": "The penal interest on overdue personal‑loan EMIs is **2.0 % per month** (equivalent to 24 % per annum) calculated on the overdue amount from the due date to the actual realization date. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7027,
+        "latency_s": 2.343,
+        "standalone_question": "What is the penal interest rate on overdue personal loan EMIs?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — Section 5.2: Bounce and Overdue Penalties, p. 3"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si05",
+        "category": "single",
+        "question": "What is the maximum loan amount in the PL-PRIME slab?",
+        "answer": "The maximum loan amount in the PL‑PRIME slab is ₹10,00,000. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6314,
+        "latency_s": 1.47,
+        "standalone_question": "What is the maximum loan amount in the PL-PRIME slab?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — Section 3: Loan Quantums, Slabs, and Tenure Options, p. 2"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si06",
+        "category": "single",
+        "question": "How long does it take to receive the No-Objection Certificate after my loan is settled?",
+        "answer": "It takes **3 business days** to receive the authenticated digital No‑Objection Certificate after your loan is fully settled. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6113,
+        "latency_s": 7.355,
+        "standalone_question": "How long does it take to receive the No-Objection Certificate after my loan is settled?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — Section 6.3: No-Objection Certificate (NOC) and Lien Discharge, p. 3"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si07",
+        "category": "single",
+        "question": "What is the processing fee on a personal loan?",
+        "answer": "The processing fee on a personal loan is 1.5 % of the sanctioned loan amount plus 18 % GST, with a minimum of ₹1,000 and a maximum of ₹15,000. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.707,
+        "latency_s": 8.815,
+        "standalone_question": "What is the processing fee on a personal loan?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q020 (Section 23), p. 12"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si08",
+        "category": "single",
+        "question": "What is the remediation time for metric code MET-PL-1301?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "gate_refusal",
+        "refused": true,
+        "retrieval_score": 0.3679,
+        "latency_s": 1.579,
+        "standalone_question": "What is the remediation time for metric code MET-PL-1301?",
+        "fact_match": false,
+        "citation_valid": false,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": []
+      },
+      {
+        "id": "si09",
+        "category": "single",
+        "question": "Who can I escalate to if the Grievance Officer does not resolve my complaint?",
+        "answer": "If the Grievance Officer does not resolve your complaint, you can further appeal to the Principal Nodal Officer and the RBI Ombudsman by filing a case through the RBI CMS portal (`cms.rbi.org.in`). [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.4998,
+        "latency_s": 5.486,
+        "standalone_question": "Who can I escalate to if the Grievance Officer does not resolve my complaint?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — Section 22: Dispute Arbitration and Customer Grievance Redressal, p. 9"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si10",
+        "category": "single",
+        "question": "What interest rate does a senior citizen get on a 1-year fixed deposit?",
+        "answer": "Senior citizens receive an effective interest rate of **8.00% p.a.** on a 1‑year Fixed Deposit. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6537,
+        "latency_s": 11.029,
+        "standalone_question": "What interest rate does a senior citizen get on a 1-year fixed deposit?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Fixed Deposits & Wealth Products Master Guidelines — FAQ Q031 (Section 23), p. 13"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si11",
+        "category": "single",
+        "question": "What penalty applies if I break my fixed deposit before maturity?",
+        "answer": "The penalty for breaking a Fixed Deposit before maturity is a deduction of **1.00 %** from the applicable interest rate for the period the deposit actually ran. If the deposit is closed within 7 days, **zero interest is paid**. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7115,
+        "latency_s": 5.467,
+        "standalone_question": "What penalty applies if I break my fixed deposit before maturity?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Fixed Deposits & Wealth Products Master Guidelines — FAQ Q042 (Section 23), p. 15"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si12",
+        "category": "single",
+        "question": "What is the minimum monthly SIP amount?",
+        "answer": "The minimum monthly SIP amount is ₹100 per month. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6079,
+        "latency_s": 11.541,
+        "standalone_question": "What is the minimum monthly SIP amount?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Fixed Deposits & Wealth Products Master Guidelines — FAQ Q034 (Section 23), p. 14"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si13",
+        "category": "single",
+        "question": "Does FinBase offer cryptocurrency trading?",
+        "answer": "No. FinBase explicitly does NOT offer cryptocurrency trading, Bitcoin wallets, or virtual digital asset exchange services. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7569,
+        "latency_s": 10.769,
+        "standalone_question": "Does FinBase offer cryptocurrency trading?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Fixed Deposits & Wealth Products Master Guidelines — FAQ Q036 (Section 23), p. 14"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si14",
+        "category": "single",
+        "question": "What is the minimum amount I can spend on digital gold?",
+        "answer": "The minimum amount you can spend on digital gold on FinBase is ₹10. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6777,
+        "latency_s": 10.124,
+        "standalone_question": "What is the minimum amount I can spend on digital gold?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Fixed Deposits & Wealth Products Master Guidelines — FAQ Q075 (Section 23), p. 20-21"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si15",
+        "category": "single",
+        "question": "What is the daily UPI transaction limit?",
+        "answer": "The daily UPI transaction limit is ₹1,00,000 or a maximum of 20 outbound transactions per rolling 24‑hour window. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7503,
+        "latency_s": 10.251,
+        "standalone_question": "What is the daily UPI transaction limit?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Digital Savings Accounts & Banking Operations Manual — FAQ Q076 (Section 23), p. 21"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si16",
+        "category": "single",
+        "question": "What UPI limit applies in the first 24 hours after I reset my UPI PIN?",
+        "answer": "The UPI transfer limit is ₹5,000 for the first 24 hours after resetting your PIN. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6731,
+        "latency_s": 8.54,
+        "standalone_question": "What UPI limit applies in the first 24 hours after I reset my UPI PIN?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Payments, UPI & Refund Settlement SOP — FAQ Q033 (Section 23), p. 14"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si17",
+        "category": "single",
+        "question": "How much compensation do I get if a failed UPI transaction is reversed late?",
+        "answer": "You receive ₹100 per calendar day of delay if the auto‑reversal of a failed UPI transaction exceeds T+2 business days. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6705,
+        "latency_s": 6.454,
+        "standalone_question": "How much compensation do I get if a failed UPI transaction is reversed late?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Payments, UPI & Refund Settlement SOP — FAQ Q042 (Section 23), p. 15-16"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si18",
+        "category": "single",
+        "question": "Within how many days must I report a disputed merchant debit in the app?",
+        "answer": "You must report a disputed merchant debit within **3 calendar days** of the transaction occurrence. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6455,
+        "latency_s": 10.363,
+        "standalone_question": "Within how many days must I report a disputed merchant debit in the app?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Payments, UPI & Refund Settlement SOP — Section 3: Merchant Disputes, Chargebacks, and Provisional Credit, p. 2"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si19",
+        "category": "single",
+        "question": "What is the foreign currency markup on the FinBase Luxe credit card?",
+        "answer": "The foreign currency markup fee on the FinBase Luxe Credit Card is 1.50% on all international transactions. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.8163,
+        "latency_s": 5.402,
+        "standalone_question": "What is the foreign currency markup on the FinBase Luxe credit card?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Credit Cards Comprehensive Handbook & Cardholder Agreement — FAQ Q041 (Section 23), p. 16"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si20",
+        "category": "single",
+        "question": "What is the annual fee of the FinBase Metal credit card?",
+        "answer": "The FinBase Metal credit card has an annual fee of ₹4,999 + 18% GST. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7384,
+        "latency_s": 5.349,
+        "standalone_question": "What is the annual fee of the FinBase Metal credit card?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Credit Cards Comprehensive Handbook & Cardholder Agreement — Section 1.3: FinBase Metal Credit Card (Ultra-Premium), p. 2"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si21",
+        "category": "single",
+        "question": "How long is the interest-free grace period on credit cards?",
+        "answer": "The interest‑free grace period on FinBase credit cards ranges between 45 to 50 days, depending on the transaction date. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.8094,
+        "latency_s": 6.197,
+        "standalone_question": "How long is the interest-free grace period on credit cards?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Credit Cards Comprehensive Handbook & Cardholder Agreement — Section 3.1: Interest-Free Grace Period, p. 2"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si22",
+        "category": "single",
+        "question": "What late payment fee applies to a credit card balance of ₹3,000?",
+        "answer": "The late payment fee for a balance of ₹3,000 is ₹400 + GST. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.619,
+        "latency_s": 7.796,
+        "standalone_question": "What late payment fee applies to a credit card balance of ₹3,000?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Credit Cards Comprehensive Handbook & Cardholder Agreement — Section 21: Master Schedule of Credit Card Fees and Penalties, p. 9"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si23",
+        "category": "single",
+        "question": "How is the minimum amount due on a credit card calculated?",
+        "answer": "The minimum amount due (MAD) is calculated as 5 % of the total outstanding balance, or ₹250, whichever is higher, plus all applicable taxes, EMI installments, and any overdue amounts from prior cycles. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6971,
+        "latency_s": 6.624,
+        "standalone_question": "How is the minimum amount due on a credit card calculated?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Credit Cards Comprehensive Handbook & Cardholder Agreement — Section 3.2: Minimum Amount Due (MAD) Calculation, p. 2"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si24",
+        "category": "single",
+        "question": "What interest rate does the savings account pay on balances above ₹10 lakh?",
+        "answer": "The savings account pays **7.00% per annum** on the incremental balance above ₹10 lakh. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.744,
+        "latency_s": 6.181,
+        "standalone_question": "What interest rate does the savings account pay on balances above ₹10 lakh?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Digital Savings Accounts & Banking Operations Manual — FAQ Q033 (Section 23), p. 14"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si25",
+        "category": "single",
+        "question": "How many free ATM withdrawals do I get at partner ATMs each month?",
+        "answer": "You receive **5 free ATM withdrawals per month at partner ATMs**. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6321,
+        "latency_s": 5.146,
+        "standalone_question": "How many free ATM withdrawals do I get at partner ATMs each month?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Digital Savings Accounts & Banking Operations Manual — FAQ Q044 (Section 23), p. 16"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si26",
+        "category": "single",
+        "question": "What is the daily IMPS limit on the digital savings account?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.6436,
+        "latency_s": 9.338,
+        "standalone_question": "What is the daily IMPS limit on the digital savings account?",
+        "fact_match": false,
+        "citation_valid": false,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": []
+      },
+      {
+        "id": "si27",
+        "category": "single",
+        "question": "Is there a minimum balance requirement for the digital savings account?",
+        "answer": "No, there is no minimum balance requirement for a FinBase Digital Savings Account. The account is a zero‑balance account with no Minimum Average Balance (MAB) requirement and zero penalty for maintaining a zero balance. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7544,
+        "latency_s": 2.254,
+        "standalone_question": "Is there a minimum balance requirement for the digital savings account?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Digital Savings Accounts & Banking Operations Manual — FAQ Q041 (Section 23), p. 15-16"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si28",
+        "category": "single",
+        "question": "When are Video KYC agents available?",
+        "answer": "Video KYC agents are available **Monday through Saturday from 9:00 AM to 8:00 PM IST** (closed on national holidays). [S5]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6477,
+        "latency_s": 9.382,
+        "standalone_question": "When are Video KYC agents available?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase KYC Verification, Compliance & Security Master Document — Section 3: Video KYC Process, Timings, and Prerequisites, p. 2"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si29",
+        "category": "single",
+        "question": "After how long without transactions does an account become dormant?",
+        "answer": "An account becomes dormant after **24 continuous months** of no customer transactions. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6552,
+        "latency_s": 8.811,
+        "standalone_question": "After how long without transactions does an account become dormant?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase KYC Verification, Compliance & Security Master Document — FAQ Q053 (Section 23), p. 17"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si30",
+        "category": "single",
+        "question": "What is my liability if I report an unauthorized transaction 5 days after the alert?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.5337,
+        "latency_s": 6.657,
+        "standalone_question": "What is my liability if I report an unauthorized transaction 5 days after the alert?",
+        "fact_match": false,
+        "citation_valid": false,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": []
+      },
+      {
+        "id": "si31",
+        "category": "single",
+        "question": "What is the fraud helpline number?",
+        "answer": "The 24/7 toll‑free fraud helpline is 1800‑FIN‑BASE (1800‑346‑2273). [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6529,
+        "latency_s": 7.32,
+        "standalone_question": "What is the fraud helpline number?",
+        "fact_match": false,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase KYC Verification, Compliance & Security Master Document — FAQ Q095 (Section 23), p. 24"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "si32",
+        "category": "single",
+        "question": "Which documents are accepted as officially valid documents for KYC?",
+        "answer": "The officially valid documents accepted for KYC are: Aadhaar Card, PAN Card, Indian Passport, Driving License, and Voter ID Card. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6462,
+        "latency_s": 6.457,
+        "standalone_question": "Which documents are accepted as officially valid documents for KYC?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase KYC Verification, Compliance & Security Master Document — Section 2: Officially Valid Documents (OVD) Accepted, p. 2"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "mu33",
+        "category": "multi",
+        "question": "How does the foreclosure charge on a personal loan differ before and after 24 months?",
+        "answer": "After 24 months the foreclosure charge is **1.5 % of the outstanding principal plus 18 % GST** [S1][S2][S3][S4][S5]. \nThe documents do not state what the charge is before 24 months.",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.6148,
+        "latency_s": 6.648,
+        "standalone_question": "How does the foreclosure charge on a personal loan differ before and after 24 months?",
+        "fact_match": false,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q042 (Section 23), p. 16",
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q052 (Section 23), p. 18",
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q022 (Section 23), p. 13",
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q012 (Section 23), p. 11",
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q032 (Section 23), p. 14"
+        ],
+        "judge_correct": false,
+        "groundedness": 1.0
+      },
+      {
+        "id": "mu34",
+        "category": "multi",
+        "question": "Compare the foreign currency markup of the Neo and Metal credit cards.",
+        "answer": "The FinBase Metal card carries a foreign‑currency markup of **1.00%**【S1】. \nThe foreign‑currency markup for the Neo card is not mentioned in the provided context.",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.641,
+        "latency_s": 10.46,
+        "standalone_question": "Compare the foreign currency markup of the Neo and Metal credit cards.",
+        "fact_match": false,
+        "citation_valid": false,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [],
+        "judge_correct": false,
+        "groundedness": null
+      },
+      {
+        "id": "fo35",
+        "category": "followup",
+        "question": "And what if I close it after 24 months?",
+        "answer": "The foreclosure charge is 1.5% of the outstanding principal plus 18% GST. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7805,
+        "latency_s": 11.373,
+        "standalone_question": "What is the foreclosure charge on a personal loan closed after 24 months?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Personal Loans Master Policy & Operational Manual — FAQ Q062 (Section 23), p. 19"
+        ],
+        "judge_correct": false,
+        "groundedness": 1.0
+      },
+      {
+        "id": "fo36",
+        "category": "followup",
+        "question": "How can I get that fee waived?",
+        "answer": "You can have the ₹999 + 18% GST annual fee waived if your total annual spends exceed ₹1,20,000 in the previous calendar year. [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.8229,
+        "latency_s": 12.8,
+        "standalone_question": "How can I get the annual fee of ₹999 plus 18% GST for the FinBase Luxe credit card waived?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": false,
+        "citation_precision": 0.0,
+        "cited_sources": [
+          "FinBase Credit Cards Comprehensive Handbook & Cardholder Agreement — FAQ Q022 (Section 23), p. 13"
+        ],
+        "judge_correct": false,
+        "groundedness": 1.0
+      },
+      {
+        "id": "fo37",
+        "category": "followup",
+        "question": "How many transactions can I make in a day?",
+        "answer": "You can make up to **20 outbound UPI transactions per day** (subject to the ₹1,00,000 daily limit). [S1]",
+        "route": "rag",
+        "refused": false,
+        "retrieval_score": 0.7472,
+        "latency_s": 9.574,
+        "standalone_question": "Given the daily UPI limit of ₹1,00,000 per calendar day, how many UPI transactions can I make in a day?",
+        "fact_match": true,
+        "citation_valid": true,
+        "citation_hit": true,
+        "citation_precision": 1.0,
+        "cited_sources": [
+          "FinBase Payments, UPI & Refund Settlement SOP — Section 1: UPI Limits and 24-Hour Security Cooling Period, p. 1"
+        ],
+        "judge_correct": true,
+        "groundedness": 1.0
+      },
+      {
+        "id": "un38",
+        "category": "unanswerable",
+        "question": "What is the interest rate on a home loan?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.4768,
+        "latency_s": 8.479,
+        "standalone_question": "What is the interest rate on a home loan?"
+      },
+      {
+        "id": "un39",
+        "category": "unanswerable",
+        "question": "Does FinBase offer car loans?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.6077,
+        "latency_s": 5.503,
+        "standalone_question": "Does FinBase offer car loans?"
+      },
+      {
+        "id": "un40",
+        "category": "unanswerable",
+        "question": "Who is the CEO of FinBase?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.475,
+        "latency_s": 3.313,
+        "standalone_question": "Who is the CEO of FinBase?"
+      },
+      {
+        "id": "un41",
+        "category": "unanswerable",
+        "question": "What is the IFSC code of the FinBase head office?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.5471,
+        "latency_s": 3.605,
+        "standalone_question": "What is the IFSC code of the FinBase head office?"
+      },
+      {
+        "id": "un42",
+        "category": "unanswerable",
+        "question": "How do I open an NRI account?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "gate_refusal",
+        "refused": true,
+        "retrieval_score": 0.3592,
+        "latency_s": 1.903,
+        "standalone_question": "How do I open an NRI account?"
+      },
+      {
+        "id": "un43",
+        "category": "unanswerable",
+        "question": "What is the interest rate on a gold loan?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.4807,
+        "latency_s": 3.318,
+        "standalone_question": "What is the interest rate on a gold loan?"
+      },
+      {
+        "id": "un44",
+        "category": "unanswerable",
+        "question": "What is the process to open a demat account?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.4465,
+        "latency_s": 8.17,
+        "standalone_question": "What is the process to open a demat account?"
+      },
+      {
+        "id": "un45",
+        "category": "unanswerable",
+        "question": "What is the capital of France?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "gate_refusal",
+        "refused": true,
+        "retrieval_score": 0.0794,
+        "latency_s": 0.731,
+        "standalone_question": "What is the capital of France?"
+      },
+      {
+        "id": "un46",
+        "category": "unanswerable",
+        "question": "Can I get a cheque book with my digital savings account?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.4609,
+        "latency_s": 2.407,
+        "standalone_question": "Can I get a cheque book with my digital savings account?"
+      },
+      {
+        "id": "un47",
+        "category": "unanswerable",
+        "question": "What is the maximum amount for a business loan?",
+        "answer": "I couldn't find this information in the FinBase knowledge base, so I can't answer it reliably. Please contact FinBase support for help with this question.",
+        "route": "llm_refusal",
+        "refused": true,
+        "retrieval_score": 0.6398,
+        "latency_s": 5.296,
+        "standalone_question": "What is the maximum amount for a business loan?"
+      }
+    ]
+  }
+}

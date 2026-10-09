@@ -153,6 +153,28 @@ Reading the results:
 - The cross-encoder gives the best Hit@1 and MRR, so it places the right passage first more often, but it lowers Hit@5 compared with plain hybrid. The reranker only reorders a pool of 12 fused candidates, so gold passages that fall outside its top picks are lost. `hybrid_rerank` remains the default for answer quality at the top of the list; set `RETRIEVAL_MODE=hybrid` if recall in the top 5 matters more.
 - Absolute scores are modest because the metric is strict (the gold section must appear in the top-k chunks) and the embedding model is small. A larger embedding model such as `BAAI/bge-small-en-v1.5` is the first thing to try for higher recall; it is a one-line change to `EMBEDDING_MODEL`, and the index rebuilds automatically.
 
+### End-to-end results (`hybrid_rerank`, Groq `openai/gpt-oss-20b`)
+
+Run on 2026-10-09 with `python evaluate.py` over all 47 questions (37 answerable, 10 unanswerable).
+
+| Area | Metric | Result |
+|---|---|---|
+| Answer correctness | Fact match (deterministic) | 83.8% |
+| Answer correctness | LLM judge correctness | 88.2% |
+| Groundedness | Supported-claim rate | 100% |
+| Hallucination control | Refusal rate on unanswerable questions | 100% (10 of 10) |
+| Hallucination control | False-refusal rate on answerable questions | 8.1% (3 of 37) |
+| Citation accuracy | Citation validity | 89.2% |
+| Citation accuracy | Citation hit rate / precision | 32.4% / 32.4% |
+| Latency | Mean / p95 per question | 6.5 s / 11.4 s |
+
+What the numbers say:
+
+- **Strength:** the assistant never answered an out-of-scope question, and every claim in its answers was supported by the cited passages.
+- **Weakness:** citation hit rate and precision (32.4%) equal the retrieval Hit@5 of `hybrid_rerank`, so the limit is retrieval, not generation. The metric is strict: it counts a citation only when it points to the gold section, and answers can still be correct when the same rule appears in another section or FAQ item.
+- **Latency** includes automatic retries after Groq free-tier rate limits (HTTP 429), so it is higher than a paid-tier deployment would see.
+- The judge is the same model as the generator, so judge scores are best read as relative.
+
 ### Calibrating `MIN_SIMILARITY`
 
 The evaluation report prints the top-similarity range for answerable and unanswerable questions, plus two thresholds: one that never blocks a valid question and one that best separates the two groups.
@@ -160,14 +182,14 @@ The evaluation report prints the top-similarity range for answerable and unanswe
 | Group | Min | Mean | Max |
 |---|---|---|---|
 | Answerable | 0.368 | 0.673 | 0.861 |
-| Unanswerable | 0.079 | 0.461 | 0.640 |
+| Unanswerable | 0.079 | 0.457 | 0.640 |
 
 | Threshold | Value | Effect |
 |---|---|---|
 | Never block a valid question | 0.363 | Blocks 20% of unanswerable questions at the gate |
 | Best balanced | 0.608 | 89.6% balanced accuracy, but would block some valid questions |
 
-The default of `0.40` is slightly above the safe value, and in the evaluation run it refused one answerable question whose top similarity was 0.368. Lower `MIN_SIMILARITY` to about `0.36` to avoid false refusals, or raise it toward `0.6` to refuse more aggressively. Unanswerable questions about nearby topics (for example "home loan rate") score close to real questions, so the gate catches clearly off-topic queries and the grounding prompt catches the rest.
+The default of `0.40` is slightly above the safe value, and the gate contributes to the false-refusal rate (an answerable question with top similarity 0.368 was refused in the run). Lower `MIN_SIMILARITY` to about `0.36` to avoid false refusals, or raise it toward `0.6` to refuse more aggressively. Unanswerable questions about nearby topics (for example "home loan rate") score close to real questions, so the gate catches clearly off-topic queries and the grounding prompt catches the rest.
 
 ## Tests
 
