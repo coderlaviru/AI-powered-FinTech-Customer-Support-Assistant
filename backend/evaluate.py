@@ -27,7 +27,7 @@ Calibration
     Top dense similarity distribution for answerable vs unanswerable questions, and the
     MIN_SIMILARITY values that follow from it.
 
-The judge uses the same Grok model as the generator, which can favour its own style; use the
+The judge uses the same Groq model as the generator, which can favour its own style; use the
 numbers to compare pipeline variants rather than as absolute truth.
 """
 
